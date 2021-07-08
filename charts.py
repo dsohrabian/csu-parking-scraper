@@ -7,12 +7,13 @@ cols = df.columns
 select_col = [field for field in cols if 'perc' in field if 'permit' in field]
 
 plotdf = df[select_col]
-dailymins = plotdf.resample('1D').min()
+dailymins = plotdf.resample('30T').min()
 dailymins.columns = ['South', 'Prospect', 'West', 'Central', 'East']
 
 plt.style.use('seaborn')
-ax = dailymins.plot(style='o-')
+ax = dailymins.plot(style='o-', ms=3.5, lw=1)
 ax.yaxis.set_major_formatter('{x:.0%}')
-ax.set_ylabel('Lowest daily garage vacancy')
+ax.set_ylabel('Garage Vacancy')
 ax.set_xlabel('')
+plt.legend(bbox_to_anchor=(.5, .98), bbox_transform=plt.gcf().transFigure, ncol=5, loc="upper center",)
 plt.tight_layout()

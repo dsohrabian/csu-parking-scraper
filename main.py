@@ -1,13 +1,15 @@
 import csv
 import requests
+import time
+import datetime as dt
 
-site = r"http://parkingspaces.csuohio.edu/feed.php"
-ids = ['WG', 'CG', 'EG', 'SG']
-agent = r"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36"
-
-r = requests.get(site, headers={'user-agent': agent})
-out = r.json()
-
+def get_feed():
+    site = r"http://parkingspaces.csuohio.edu/feed.php"
+    ids = ['WG', 'CG', 'EG', 'SG']
+    agent = r"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36"
+    r = requests.get(site, headers={'user-agent': agent})
+    out = r.json()
+    return out
 
 def process_feed(feed: list):
     result_dict = {}
@@ -32,12 +34,16 @@ def process_feed(feed: list):
         outlist.extend([subscriber_open, sub_open_perc, trans_open, trans_open_perc])
     return outlist
 
-final = process_feed(out)
-
-csv_file = "CSU_parking_live.csv"
-try:
-    with open(csv_file, 'a', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(final)
-except IOError:
-    print("I/O error")
+while True:
+    out = get_feed()
+    final = process_feed(out)
+    csv_file = "CSU_parking_live.csv"
+    try:
+        with open(csv_file, 'a', newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(final)
+    except IOError:
+        print("I/O error")
+    print(f"Ran at {dt.datetime.now()}")
+    print('Sleeping fifteen minutes.')
+    time.sleep(15*60) # fifteen minute wait

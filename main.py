@@ -1,3 +1,4 @@
+# Leave this script open to scrape the
 import csv
 import requests
 import time

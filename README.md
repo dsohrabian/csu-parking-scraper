@@ -18,10 +18,18 @@ it subsidizes and encourages unsustainable transportation patterns, and after al
 * Still testing accuracy, consistency and usefulness of source.
     
 * The main issue on this data source is whether capacity is dictated by an arbitrary number of managed spaces or if it refl
-  ects actual physical capacity. **From first glance these the space numbers seem lower than actual physical capcaity**
+  ects actual physical capacity.  
+  According to the [CSU sites for each garage](https://www.csuohio.edu/parking/west-garage) there is the following
+  amount of parking capacity:
+  * 611 spaces in South Garage
+  * 291 spaces in Prospect Garage
+  * 600 spaces in West Garage
+  * 867 spaces in Central Garage
+  * 600 spaces in East Garage
 
 * Will be posting my scraped data here semi-regularly
 
+[Example graph](example/ex1.png?raw=true)
 
 
 

@@ -1,9 +1,13 @@
 # csu-parking-scraper
 ## Purpose
 
-Quantify how overbuilt the campus' parking facilities are. Structured garages cost millions in capital
+To quantify how overbuilt the campus' parking facilities are. Structured garages cost millions in capital
 funds that can go to more active uses for students and the built environment of the campus;
 it subsidizes and encourages unsustainable transportation patterns, and after all this, it sits empty most of the time.
+
+At about $20,000 per space for construction cost, the five garages that are scraped here probably cost
+somewhere around **$60 million** dollars to build; they also have debt to be paid and millions in operating costs.
+
 
 [Why America Has So Many Empty Parking Spaces](https://www.mentalfloss.com/article/503014/why-america-has-so-many-empty-parking-spaces)
 
@@ -29,7 +33,8 @@ it subsidizes and encourages unsustainable transportation patterns, and after al
 
 * Will be posting my scraped data here semi-regularly
 
-[Example graph](example/ex1.png?raw=true)
+####Example graph
+![Example graph](example/ex1.png?raw=true)
 
 
 

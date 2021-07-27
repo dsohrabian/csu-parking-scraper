@@ -31,9 +31,11 @@ locator = md.AutoDateLocator()
 ax.set_ylabel('% Occupied Space')
 ax.set_xlabel('')
 ax.set_ylim(0, 1)
-plt.text(.5, .9, f'{parking_total:,d}' + ' spaces total', ha='center', transform=ax.transAxes,
+plt.text(.2, .9, f'{parking_total:,d}' + ' spaces total', ha='center', transform=ax.transAxes,
          bbox={'boxstyle': 'round', 'color': '.8'})
-plt.text(.8, .9, f'{avg_empty:,.0f} avg. empty', c='red', ha='center', transform=ax.transAxes,
+plt.text(.8, .9, f'{avg_empty:,.0f} avg. empty', c='blue', ha='center', transform=ax.transAxes,
+         bbox={'boxstyle': 'round', 'color': '.8'})
+plt.text(.8, .82, f'${avg_empty*20000/1000000:.1f}m unused capital cost', c='red', ha='center', transform=ax.transAxes,
          bbox={'boxstyle': 'round', 'color': '.8'})
 
 average_spaces = hourlymins

@@ -32,6 +32,6 @@ that consume most of the parking revenues.
 
 * Will be posting my scraped data here semi-regularly
 
-*Example*  
+*Latest chart*  
 
 ![Example](example/ex1.png)

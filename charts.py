@@ -46,3 +46,4 @@ average_spaces = hourlymins
 
 plt.suptitle(f'All Garages (South, Prospect, West, Central, East)')
 plt.tight_layout()
+plt.savefig('./example/ex1.png')

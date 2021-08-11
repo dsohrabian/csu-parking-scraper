@@ -16,7 +16,7 @@ that consume most of the parking revenues.
 * A simple scraper script that obtains parking availability numbers from 
 [Cleveland State University's live parking portal](http://parkingspaces.csuohio.edu/).
 
-* Intended to be left running in background (coded for 15 minute intervals but can remove infinite loop and run on Task Scheduler or similar)
+* Intended to be left running in background (coded for 15 minute interval requests but can remove infinite loop and run on Task Scheduler or similar)
 
 * Still testing accuracy, consistency and usefulness of source.
     
@@ -34,4 +34,4 @@ that consume most of the parking revenues.
 
 *Latest chart*  
 
-![Example](example/ex1.png)
+![Example](/example/ex1.png)

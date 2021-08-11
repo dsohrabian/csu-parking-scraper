@@ -60,7 +60,7 @@ plt.text(.65, .78, '*Based on $20k per space construction cost', color='.25',
 
 average_use = hourlymins['percent_use'].mean()
 plt.axhline(average_use, ls=':', lw=2, c='tab:blue', alpha=.75)
-plt.annotate(f'{average_use:.1%}% avg. hourly use', xy=(date_min + 1, average_use), xytext=(date_min + 10, .1), c= 'tab:blue',
+plt.annotate(f'{average_use:.1%} avg. hourly use', xy=(date_min + 1, average_use), xytext=(date_min + 10, .1), c= 'tab:blue',
              arrowprops={'arrowstyle': '->', 'connectionstyle': "angle,angleA=180,angleB=90", 'color': 'tab:blue',
                          'lw': '.5', 'alpha': 0.75})
 

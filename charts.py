@@ -66,5 +66,4 @@ plt.annotate(f'{average_use:.1%} avg. hourly use', xy=(date_min + 1, average_use
 
 plt.suptitle(f'CSU Garages (South, Prospect, West, Central, East)')
 plt.tight_layout()
-plt.savefig('./example/ex1.png', dpi=150)
-plt.savefig('./example/ex1_thumb.png', dpi=72)
+plt.savefig('./exports/ex1.png', dpi=150)

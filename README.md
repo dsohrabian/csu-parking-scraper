@@ -34,4 +34,4 @@ that consume most of the parking revenues.
 
 *Latest chart*
 
-![Example](exports/ex1_thumb.png)
+![Example](exports/ex1.png)

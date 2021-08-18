@@ -33,11 +33,11 @@ ax.plot('percent_use', '-', ms=3.5, lw=2, data=hourlymins)
 # x axis major ticks as months
 fmt_months = md.MonthLocator(interval=1)
 ax.xaxis.set_major_locator(fmt_months)
-ax.xaxis.set_major_formatter(md.DateFormatter('%b %y'))  # label as month and 2 digit year
+ax.xaxis.set_major_formatter(md.DateFormatter('%b'))  # label as month and 2 digit year
 plt.setp(ax.xaxis.get_majorticklabels(), fontweight='semibold')
 
 # x
-fmt_days = md.DayLocator(interval=2, bymonthday=range(3, 31))
+fmt_days = md.DayLocator(interval=4, bymonthday=range(3, 31))
 ax.xaxis.set_minor_locator(fmt_days)
 ax.xaxis.set_minor_formatter(md.DateFormatter('%d'))
 plt.setp(ax.xaxis.get_minorticklabels(), rotation=90, size=8)
@@ -64,6 +64,8 @@ plt.annotate(f'{average_use:.1%} avg. hourly use', xy=(date_min + 1, average_use
              arrowprops={'arrowstyle': '->', 'connectionstyle': "angle,angleA=180,angleB=90", 'color': 'tab:blue',
                          'lw': '.5', 'alpha': 0.75})
 
+plt.text(.5, 1.01, f'{date_min+2} to {date_max-2}', size=7, c='gray', ha='center', transform= ax.transAxes)
+
 plt.suptitle(f'CSU Garages (South, Prospect, West, Central, East)')
 plt.tight_layout()
-plt.savefig('./exports/ex1.png', dpi=150)
+plt.savefig('./exports/ex1.png', dpi=150, )

@@ -14,16 +14,16 @@ cols = df.columns
 
 # plotter
 select_col = [field for field in cols if 'spaces' in field]
-parking_total = sum([611, 291, 600, 867, 600])  # total parking capacity per facility found on website in order of
+capacity_total = sum([611, 291, 600, 867, 600])  # total parking capacity per facility found on website in order of
 # data,i.e. 'South', 'Prospect', 'West', 'Central', 'East'
-plotdf = df[select_col].copy()
-plotdf['percent_use'] = 1 - (plotdf.sum(axis=1) / parking_total)  # get percent used
-plotdf['total_open'] = plotdf.iloc[:, 0:-1].sum(axis=1)  # get percent open
-avg_empty = plotdf['total_open'].mean()
-construction_cost = avg_empty * 20000 / 1000000  # cost of empty spaces in millions
+plot_df = df[select_col].copy()
+plot_df['total_open'] = plot_df.sum(axis=1) # total number of open spaces in feed
+plot_df['percent_use'] = 1 - (plot_df.total_open / capacity_total)  # get inverse of percent open (a.k.a percent in use)
+avg_empty = plot_df['total_open'].mean()  # average number of open spaces available
+construction_cost = avg_empty * 20000 / 1000000  # cost of empty spaces in millions dollars
 
-# resample the data to 1 hour increments. recode to whatever is best for you scheduling
-hourlymins = plotdf.resample('1H').max()
+# resample the data to 1 hour increments for more consistent sampling in case scrapes are missed
+hourlymins = plot_df.resample('1H').max()
 
 # plot the final column percentages
 fig, ax = plt.subplots()
@@ -51,11 +51,11 @@ ax.set_ylabel('% Occupied Parking')
 ax.set_ylim(0, 1)
 ax.yaxis.set_major_formatter('{x:.0%}')
 
-plt.text(.65, .825, f'{parking_total:,d}' + ' spaces total' + '\n'
+plt.text(.55, .825, f'{capacity_total:,d}' + ' spaces total' + '\n'
          + f'{avg_empty:,.0f} avg. spaces empty' + '\n'
          + f'${construction_cost:.1f}m unused capital cost*',
          ha='left', linespacing=1.5, transform=ax.transAxes, )
-plt.text(.65, .78, '*Based on $20k per space construction cost', color='.25',
+plt.text(.55, .78, '*Based on $20k per space construction cost', color='.25',
          ha='left', fontsize=6.5, linespacing=1.5, transform=ax.transAxes, )
 
 average_use = hourlymins['percent_use'].mean()

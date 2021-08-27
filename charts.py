@@ -58,6 +58,7 @@ plt.text(.55, .825, f'{capacity_total:,d}' + ' spaces total' + '\n'
 plt.text(.55, .78, '*Based on $20k per space construction cost', color='.25',
          ha='left', fontsize=6.5, linespacing=1.5, transform=ax.transAxes, )
 
+# TODO add average use lines for in season and summer season separately
 average_use_break = hourlymins['percent_use'].mean()
 plt.axhline(average_use_break, ls=':', lw=2, c='tab:blue', alpha=.75)
 plt.annotate(f'{average_use_break:.1%} avg. hourly use', xy=(date_min + 1, average_use_break), xytext=(date_min + 10, .1), c='tab:blue',

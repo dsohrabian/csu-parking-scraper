@@ -27,7 +27,7 @@ hourlymins = plot_df.resample('1H').max()
 
 # plot the final column percentages
 fig, ax = plt.subplots()
-ax.plot('percent_use', '-', ms=3.5, lw=2, data=hourlymins)
+ax.plot('percent_use', '-', ms=3.5, lw=1, data=hourlymins)
 
 # # format the plot
 # x axis major ticks as months
@@ -51,11 +51,12 @@ ax.set_ylabel('% Occupied Parking')
 ax.set_ylim(0, 1)
 ax.yaxis.set_major_formatter('{x:.0%}')
 
-plt.text(.55, .825, f'{capacity_total:,d}' + ' spaces total' + '\n'
+xalign = .4
+plt.text(xalign, .825, f'{capacity_total:,d}' + ' spaces total' + '\n'
          + f'{avg_empty:,.0f} avg. spaces empty' + '\n'
          + f'${construction_cost:.1f}m unused capital cost*',
          ha='left', linespacing=1.5, transform=ax.transAxes, )
-plt.text(.55, .78, '*Based on $20k per space construction cost', color='.25',
+plt.text(xalign, .78, '*Based on $20k per space construction cost', color='.25',
          ha='left', fontsize=6.5, linespacing=1.5, transform=ax.transAxes, )
 
 # TODO add average use lines for in season and summer season separately

@@ -17,6 +17,7 @@ def process_feed(feed: list):
     date = feed[0]['updated']
     outlist = []
     outlist.append(date)
+    feed = feed[1:6]
     for lot in feed:
         name = lot['name']
         if "Total" in name:

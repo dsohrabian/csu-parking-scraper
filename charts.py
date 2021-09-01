@@ -60,7 +60,10 @@ plt.text(xalign, .78, '*Based on $20k per space construction cost', color='.25',
          ha='left', fontsize=6.5, linespacing=1.5, transform=ax.transAxes, )
 
 # TODO add average use lines for in season and summer season separately
-average_use_break = hourlymins['percent_use'].mean()
+average_use_break = hourlymins[hourlymins.index < '2021-08-20']['percent_use'].mean()
+average_use_school = hourlymins[hourlymins.index > '2021-08-23']['percent_use'].mean()
+
+
 plt.axhline(average_use_break, ls=':', lw=2, c='tab:blue', alpha=.75)
 plt.annotate(f'{average_use_break:.1%} avg. hourly use', xy=(date_min + 1, average_use_break), xytext=(date_min + 10, .1), c='tab:blue',
              arrowprops={'arrowstyle': '->', 'connectionstyle': "angle,angleA=180,angleB=90", 'color': 'tab:blue',

@@ -26,7 +26,7 @@ construction_cost = avg_empty * 20000 / 1000000  # cost of empty spaces in milli
 hourlymins = plot_df.resample('1H').max()
 
 # plot the final column percentages
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=[9, 4.8])
 ax.plot('percent_use', '-', ms=3.5, lw=1, data=hourlymins)
 
 # # format the plot

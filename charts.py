@@ -51,22 +51,28 @@ ax.set_ylabel('% Occupied Parking')
 ax.set_ylim(0, 1)
 ax.yaxis.set_major_formatter('{x:.0%}')
 
-xalign = .4
-plt.text(xalign, .825, f'{capacity_total:,d}' + ' spaces total' + '\n'
-         + f'{avg_empty:,.0f} avg. spaces empty' + '\n'
-         + f'${construction_cost:.1f}m unused capital cost*',
-         ha='left', linespacing=1.5, transform=ax.transAxes, )
-plt.text(xalign, .78, '*Based on $20k per space construction cost', color='.25',
-         ha='left', fontsize=6.5, linespacing=1.5, transform=ax.transAxes, )
+
 
 # TODO add average use lines for in season and summer season separately
 average_use_break = hourlymins[hourlymins.index < '2021-08-20']['percent_use'].mean()
 average_use_school = hourlymins[hourlymins.index > '2021-08-23']['percent_use'].mean()
 
+xalign = 0.05
+plt.text(xalign, .825, f'{capacity_total:,d}' + ' spaces total' + '\n'
+         + f'{average_use_school:,.0%} avg.use during school' + '\n' + f'{average_use_break:,.0%} avg.use during break',
+         ha='left', linespacing=1.5, transform=ax.transAxes )
 
+# off peak average line
 plt.axhline(average_use_break, ls=':', lw=2, c='tab:blue', alpha=.75)
-plt.annotate(f'{average_use_break:.1%} avg. hourly use', xy=(date_min + 1, average_use_break), xytext=(date_min + 10, .1), c='tab:blue',
+plt.annotate(f'{average_use_break:.0%} avg. hourly use during break', xy=(date_min + 1, average_use_break),
+             xytext=(date_min + 10, .1), c='tab:blue',
              arrowprops={'arrowstyle': '->', 'connectionstyle': "angle,angleA=180,angleB=90", 'color': 'tab:blue',
+                         'lw': '.5', 'alpha': 0.75})
+# school season line
+plt.axhline(average_use_school, ls=':', lw=2, c='tab:orange', alpha=.75)
+plt.annotate(f'{average_use_school:.0%} avg. hourly use during class', xy=(date_min + 20, average_use_school),
+             xytext=(date_min + 10, .55), c='tab:orange',
+             arrowprops={'arrowstyle': '->', 'connectionstyle': "angle,angleA=180,angleB=90", 'color': 'tab:orange',
                          'lw': '.5', 'alpha': 0.75})
 
 plt.text(.5, 1.01, f'{date_min+2} to {date_max-2}', size=7, c='gray', ha='center', transform= ax.transAxes)

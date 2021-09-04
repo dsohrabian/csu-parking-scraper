@@ -8,6 +8,7 @@ import matplotlib as mpl
 import numpy as np
 
 plt.style.use('ggplot')
+plt.interactive(False)
 mpl.rcParams['font.family'] = 'Segoe UI'
 df = pd.read_csv('CSU_parking_live.csv', index_col='date', parse_dates=True)
 cols = df.columns
@@ -28,7 +29,7 @@ off_season_hrs = hourlymins[hourlymins.index <= '2021-08-22']
 in_school_hrs = hourlymins[hourlymins.index > '2021-08-22']
 
 # plot the final column percentages
-fig, ax = plt.subplots(figsize=[15, 10], dpi=300)
+fig, ax = plt.subplots(figsize=[8, 4], dpi=200)
 ax.plot('percent_use', '-', ms=1, lw=1, data=off_season_hrs, c='tab:blue')
 ax.plot('percent_use', '-', ms=1, lw=1, data=in_school_hrs, c='tab:red')
 
@@ -61,25 +62,22 @@ average_use_break = off_season_hrs['percent_use'].mean()
 average_use_school = in_school_hrs['percent_use'].mean()
 
 xalign = 0.05
-plt.text(xalign, .825, f'{capacity_total:,d}' + ' spaces total' + '\n'
-         + f'{average_use_school:,.0%} avg.use during school' + '\n' + f'{average_use_break:,.0%} avg.use during break',
-         ha='left', linespacing=1.5, transform=ax.transAxes, fontsize='7' )
 
 # off peak average line
-plt.axhline(average_use_break, ls=':', lw=2, c='tab:blue', alpha=.75)
+plt.axhline(average_use_break, ls=':', lw=2, c='tab:blue', alpha=.5)
 plt.annotate(f'{average_use_break:.0%} avg. hourly use during break', xy=(date_min + 1, average_use_break),
              xytext=(date_min + 10, .1), c='tab:blue',
              arrowprops={'arrowstyle': '->', 'connectionstyle': "angle,angleA=180,angleB=90", 'color': 'tab:blue',
                          'lw': '.5', 'alpha': 0.75})
 # school season line
-plt.axhline(average_use_school, ls=':', lw=2, c='tab:red', alpha=.75)
+plt.axhline(average_use_school, ls=':', lw=2, c='tab:red', alpha=.5)
 plt.annotate(f'{average_use_school:.0%} avg. hourly use during class', xy=(date_min + 20, average_use_school),
              xytext=(date_min + 10, .55), c='tab:red',
              arrowprops={'arrowstyle': '->', 'connectionstyle': "angle,angleA=180,angleB=90", 'color': 'tab:red',
                          'lw': '.5', 'alpha': 0.75})
 
-plt.text(.5,.9 , f'{date_min+2} to {date_max-2}', size=7, c='gray', ha='center', transform= ax.transAxes)
+plt.text(.5,.95 , f'{date_min+2} to {date_max-2}\n  {capacity_total:,d} spaces total', size=7, va='top', c='gray', ha='center', transform= ax.transAxes)
 
-plt.suptitle(f'CSU Garages (South, Prospect, West, Central, East)', size=8)
+plt.suptitle(f'CSU Garages (South, Prospect, West, Central, East)', size=15)
 plt.tight_layout()
-plt.savefig('./exports/ex1.png', bbox_inches = 'tight' )
+plt.savefig('./exports/ex1.png' )

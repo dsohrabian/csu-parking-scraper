@@ -1,7 +1,7 @@
 # csu-parking-scraper
 ## Purpose
 
-To quantify whether the campus' parking facilities are overbuilt. Structured garages cost millions in capital
+To quantify whether the campus parking facilities are overbuilt and efficiently used. Structured garages cost millions in capital
 funds that can go to more active uses for students and the built environment of the campus;
 it subsidizes and encourages unsustainable transportation patterns, and after all this, it is inherently designed to
 sit empty half the time.

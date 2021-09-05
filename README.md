@@ -1,9 +1,10 @@
 # csu-parking-scraper
 ## Purpose
 
-To quantify how overbuilt the campus' parking facilities are. Structured garages cost millions in capital
+To quantify whether the campus' parking facilities are overbuilt. Structured garages cost millions in capital
 funds that can go to more active uses for students and the built environment of the campus;
-it subsidizes and encourages unsustainable transportation patterns, and after all this, it sits empty most of the time.
+it subsidizes and encourages unsustainable transportation patterns, and after all this, it is inherently designed to
+sit empty half the time.
 
 At about $20,000 per space for construction cost, the five garages that are scraped here probably cost
 somewhere around **$60 million** dollars to build. They also have debt service payments and millions in operations costs
@@ -19,6 +20,11 @@ that consume most of the parking revenues.
 * Intended to be left running in background (coded for 15 minute interval requests but can remove infinite loop and run on Task Scheduler or similar)
 
 * Still testing accuracy, consistency and usefulness of source.
+* So far there is evidence that CSU parking strategy is relatively better because it is designed to hit 100% at peak. 
+Many parking lots in the US are designed to rarely ever fill up, except holiday shopping and annual events.
+* On the other hand, CSU parking is 75% empty during breaks (which is a 1/3rd of the time). And due to operational
+limits of parking, it is still empty 50% of the time during full attendance because of post-5pm exodus of often suburban
+commuters.
     
 * The main issue on this data source is whether capacity is dictated by an arbitrary number of managed spaces or if it 
   reflects actual physical capacity.  

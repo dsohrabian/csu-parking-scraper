@@ -76,7 +76,7 @@ plt.annotate(f'{average_use_school:.0%} avg. hourly use during class', xy=(date_
              arrowprops={'arrowstyle': '->', 'connectionstyle': "angle,angleA=180,angleB=90", 'color': 'tab:red',
                          'lw': '.5', 'alpha': 0.75})
 
-plt.text(.5,.95 , f'{date_min+2} to {date_max-2}\n  {capacity_total:,d} spaces total', size=7, va='top', c='gray', ha='center', transform= ax.transAxes)
+plt.text(.5, .95, f'{date_min+2} to {date_max-2}\n  {capacity_total:,d} spaces total', size=7, va='top', c='gray', ha='center', transform= ax.transAxes)
 
 plt.suptitle(f'CSU Garages (South, Prospect, West, Central, East)', size=15)
 plt.tight_layout()

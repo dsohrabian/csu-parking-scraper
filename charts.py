@@ -40,8 +40,8 @@ ax.xaxis.set_major_locator(fmt_months)
 ax.xaxis.set_major_formatter(md.DateFormatter('%b'))  # label as month and 2 digit year
 plt.setp(ax.xaxis.get_majorticklabels(), fontweight='semibold')
 
-# x
-fmt_days = md.DayLocator(interval=4, bymonthday=range(3, 31))
+# x minor ticks
+fmt_days = md.DayLocator(interval=3, bymonthday=range(3, 30))
 ax.xaxis.set_minor_locator(fmt_days)
 ax.xaxis.set_minor_formatter(md.DateFormatter('%d'))
 plt.setp(ax.xaxis.get_minorticklabels(), rotation=90, size=8)

@@ -17,8 +17,8 @@ that consume most of the parking revenues.
 * A simple scraper script that obtains parking availability numbers from 
 [Cleveland State University's live parking portal](http://parkingspaces.csuohio.edu/).
 
-* Intended to be left running in background (coded for 15 minute interval requests but can remove infinite loop and run on Task Scheduler or similar)
-
+* main.py is intended to be left running in background (coded for 15 minute interval requests but can remove infinite loop and run on Task Scheduler or similar)
+* charts.py can be run as desired to generate a new plot
 * Still testing accuracy, consistency and usefulness of source.
 * So far there is evidence that CSU parking strategy is relatively better because it is designed to hit 100% at peak. 
 Many parking lots in the US are designed to rarely ever fill up, except holiday shopping and annual events.

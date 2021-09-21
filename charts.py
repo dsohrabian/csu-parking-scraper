@@ -2,7 +2,6 @@
 # You can choose to save the figures
 import matplotlib.pyplot as plt
 import matplotlib.dates as md
-import matplotlib.ticker
 import pandas as pd
 import matplotlib as mpl
 import numpy as np
@@ -18,7 +17,7 @@ select_col = [field for field in cols if 'spaces' in field]
 capacity_total = sum([611, 291, 600, 867, 600])  # total parking capacity per facility found on website in order of
 # data,i.e. 'South', 'Prospect', 'West', 'Central', 'East'
 plot_df = df[select_col].copy()
-plot_df['total_open'] = plot_df.sum(axis=1) # total number of open spaces in feed
+plot_df['total_open'] = plot_df.sum(axis=1)  # total number of open spaces in feed
 plot_df['percent_use'] = 1 - (plot_df.total_open / capacity_total)  # get inverse of percent open (a.k.a percent in use)
 avg_empty = plot_df['total_open'].mean()  # average number of open spaces available
 construction_cost = avg_empty * 20000 / 1000000  # cost of empty spaces in millions dollars
@@ -55,9 +54,6 @@ ax.set_ylabel('% Occupied Parking')
 ax.set_ylim(0, 1)
 ax.yaxis.set_major_formatter('{x:.0%}')
 
-
-
-# TODO add average use lines for in season and summer season separately
 average_use_break = off_season_hrs['percent_use'].mean()
 average_use_school = in_school_hrs['percent_use'].mean()
 
@@ -76,8 +72,9 @@ plt.annotate(f'{average_use_school:.0%} avg. hourly use during class', xy=(date_
              arrowprops={'arrowstyle': '->', 'connectionstyle': "angle,angleA=180,angleB=90", 'color': 'tab:red',
                          'lw': '.5', 'alpha': 0.75})
 
-plt.text(.5, .95, f'{date_min+2} to {date_max-2}\n  {capacity_total:,d} spaces total', size=7, va='top', c='gray', ha='center', transform= ax.transAxes)
+plt.text(.5, .95, f'{date_min + 2} to {date_max - 2}\n  {capacity_total:,d} spaces total', size=7, va='top', c='gray',
+         ha='center', transform=ax.transAxes)
 
 plt.suptitle(f'CSU Garages (South, Prospect, West, Central, East)', size=15)
 plt.tight_layout()
-plt.savefig('./exports/ex1.png' )
+plt.savefig('./exports/ex1.png')

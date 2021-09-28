@@ -2,7 +2,6 @@ library(tidyverse)
 library(dplyr)
 library(lubridate)
 library(ggplot2)
-library(Cairo)
 
 capacity_total <- sum(c(611, 291, 600, 867, 600))
 
@@ -37,7 +36,7 @@ perc_df <- perc_df %>%
   filter(day %in% countdf$day) %>%
   mutate(phase= factor(ifelse(day < "2021-08-20", 'Summer', 'Fall')))
 
-breaks = unique(perc_df$time) %>% sort()
+breaks <- unique(perc_df$time) %>% sort()
 
 perc_df %>%
   ggplot() +
@@ -46,9 +45,9 @@ perc_df %>%
   guides(x=guide_axis(angle = 90), color=guide_legend()  ) +
   scale_x_discrete(breaks=breaks[seq(1,96,5)]) +
   scale_color_manual(values=c('red','blue')) +
-  labs(x= 'Time of Day (24H)', color='School Semester', y='Percent Occupied %',
+  labs(x= 'Time of Day (24H)', color='School\nSemester', y='Percent Occupied %',
        title='Cleveland State Daily Parking Occupancy') +
-  ylim(0,100)+
-  theme(legend.position='top')
+  ylim(10,100)
+
 
 ggsave('./exports/DailyCycle_R.png', dpi=300, type='cairo' )

@@ -9,7 +9,7 @@ import numpy as np
 plt.style.use('ggplot')
 plt.interactive(False)
 mpl.rcParams['font.family'] = 'Segoe UI'
-df = pd.read_csv('CSU_parking_live.csv', index_col='date', parse_dates=True)
+df = pd.read_csv('CSU_parking_live.csv', index_col='date', parse_dates=True, infer_datetime_format=True)
 cols = df.columns
 
 # plotter

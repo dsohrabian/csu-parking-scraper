@@ -40,8 +40,8 @@ commuters.
 
 *LATEST ALL-TIME CHART*
 
-![Example](exports/ex1.png)
+![Example](/exports/ex1.png)
 
 *DAILY TRAJECTORY PLOT*
 
-![Example](exports/DailyCycle_R.png)
+![Example](/exports/DailyCycle_R.png)

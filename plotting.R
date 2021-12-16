@@ -50,4 +50,5 @@ perc_df %>%
   ylim(10,100)
 
 
-ggsave('./exports/DailyCycle_R.png', dpi=300, type='cairo' )
+ggsave('./exports/DailyCycle_R.png', dpi=300, width = 8, type='cairo' )
+

@@ -9,7 +9,9 @@ import numpy as np
 plt.style.use('ggplot')
 plt.interactive(False)
 mpl.rcParams['font.family'] = 'Segoe UI'
-df = pd.read_csv('CSU_parking_live.csv', index_col='date', parse_dates=True, infer_datetime_format=True)
+df = pd.read_csv('CSU_parking_live.csv', parse_dates=['date'], infer_datetime_format=True)
+df = df.set_index('date')
+df.index = pd.to_datetime(df.index, utc=True).tz_convert(tz='US/Eastern')
 cols = df.columns
 
 # plotter
@@ -67,7 +69,7 @@ plt.annotate(f'{average_use_break:.0%} avg. hourly use during break', xy=(date_m
                          'lw': '.5', 'alpha': 0.75})
 # school season line
 plt.axhline(average_use_school, ls=':', lw=2, c='tab:red', alpha=.5)
-plt.annotate(f'{average_use_school:.0%} avg. hourly use during class', xy=(date_min + 20, average_use_school),
+plt.annotate(f'{average_use_school:.0%} avg. hourly use \n during class', xy=(date_min + 20, average_use_school),
              xytext=(date_min + 10, .55), c='tab:red',
              arrowprops={'arrowstyle': '->', 'connectionstyle': "angle,angleA=180,angleB=90", 'color': 'tab:red',
                          'lw': '.5', 'alpha': 0.75})

@@ -40,8 +40,7 @@ breaks <- unique(perc_df$time) %>% sort()
 
 perc_df %>%
   ggplot() +
-  stat_smooth(geom='line', aes(x=time, y=percopen,group=day, color=phase),
-  alpha=.5,show.legend = TRUE,size=.5 ) +
+  geom_line( aes(x=time, y=percopen,group=day, color=phase), alpha=.5,show.legend = TRUE,size=.5 ) +
   guides(x=guide_axis(angle = 90), color=guide_legend()  ) +
   scale_x_discrete(breaks=breaks[seq(1,96,5)]) +
   scale_color_manual(values=c('red','blue')) +

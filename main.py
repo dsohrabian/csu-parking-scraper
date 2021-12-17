@@ -13,10 +13,8 @@ def get_feed():
     return out
 
 def process_feed(feed: list):
-    result_dict = {}
     date = feed[0]['updated']
-    outlist = []
-    outlist.append(date)
+    outlist = [date]
     feed = feed[1:6]
     for lot in feed:
         name = lot['name']

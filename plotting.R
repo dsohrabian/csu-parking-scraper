@@ -76,11 +76,12 @@ garagedf <- df %>%
 
 garagedf %>%
   ggplot() +
-  geom_line( aes(x=time, y=open_total,group=day, color=name), alpha=.2,show.legend = TRUE,size=.1 ) +
-  guides(x=guide_axis(angle = 90)) +
+  geom_line( aes(x=time, y=open_total,group=day, color=name), alpha=.2,show.legend = TRUE,size=.5 ) +
+  guides(x=guide_axis(angle = 90), color= guide_legend(override.aes = list(alpha=1))) +
   scale_x_discrete(breaks=breaks[seq(1,96,20)]) +
   labs(x= 'Time of Day (24H)', color='School\nSemester', y='Open Spaces',
        title='Cleveland State Daily Parking Occupancy By Garage and Weekday') +
-  facet_grid(name~week)
+  facet_grid(name~week, scales="free_y")
 
-ggsave('./exports/GarageBreakdown_R.png', dpi=300, width = 12, type='cairo' )
+ggsave('./exports/GarageBreakdown_R.png', dpi=250, units = 'px',
+       width=2500, height=1500,type='cairo' )

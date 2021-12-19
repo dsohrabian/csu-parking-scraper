@@ -38,10 +38,14 @@ commuters.
 
 * Will be posting my scraped data here semi-regularly
 
-*LATEST ALL-TIME CHART*
+*All-Time Chart*
 
 ![Example](/exports/ex1.png)
 
-*DAILY TRAJECTORY PLOT*
+*Daily Trend*
 
 ![Example](/exports/DailyCycle_R.png)
+
+*Daily Trend by Garage and Day*
+
+![Example](/exports/GarageBreakdown_R.png)
